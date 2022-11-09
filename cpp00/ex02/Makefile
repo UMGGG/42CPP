@@ -1,7 +1,7 @@
 NAME = account
 GCC = c++
-GCCFLAGS = -Wall -Wextra -Werror -std=c++98
-SRCS = acount.cpp test.cpp
+GCCFLAGS = -Wall -Wextra -Werror
+SRCS = Account.cpp test.cpp
 
 $(NAME): $(SRCS)
 	$(GCC) $(SRCS) $(GCCFLAGS) -o $(NAME)
