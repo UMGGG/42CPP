@@ -1,6 +1,6 @@
-#include "contact.hpp"
+#include "Contact.hpp"
 
-contact::contact(std::string firstname, std::string lastname, \
+Contact::Contact(std::string firstname, std::string lastname, \
 	std::string nickname, std::string phonenum, std::string secret)
 	{
 		this->firstname = firstname;
@@ -10,26 +10,35 @@ contact::contact(std::string firstname, std::string lastname, \
 		this->secret = secret;
 	}
 
-contact::contact()
+Contact::Contact()
 {
-	contact("", "", "", "", "");
+	Contact("", "", "", "", "");
 }
 
-contact::~contact()
+Contact::~Contact()
 {
 }
 
-std::string contact::get_firstname()
+std::string Contact::get_firstname()
 {
 	return (this->firstname);
 }
 
-std::string contact::get_lastname()
+std::string Contact::get_lastname()
 {
 	return (this->lastname);
 }
 
-std::string contact::get_nickname()
+std::string Contact::get_nickname()
 {
 	return (this->nickname);
+}
+
+void	Contact::show_contact()
+{
+	std::cout << "firstname : " << this->firstname << std::endl;
+	std::cout << "lastname : " << this->lastname << std::endl;
+	std::cout << "nickname : " << this->nickname << std::endl;
+	std::cout << "phonenumber : " << this->phonenum << std::endl;
+	std::cout << "secret : " << this->secret << std::endl;
 }

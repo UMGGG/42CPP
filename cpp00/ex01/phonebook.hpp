@@ -1,19 +1,21 @@
 #ifndef PHONEBOOK_CPP
 # define PHONEBOOK_CPP
 
-# include "contact.hpp"
+# include "Contact.hpp"
 
-class phonebook
+class PhoneBook
 {
 	private:
-			contact	contacts[8];
+			Contact	contacts[8];
 			int		idx;
 			int		count;
 	public:
-			phonebook();
+			PhoneBook();
 			void add_contact();
 			void show_contact();
-			~phonebook();
+			void show_contact(std::string idx);
+			std::string get_short_string(std::string str);
+			~PhoneBook();
 };
 
 #endif
