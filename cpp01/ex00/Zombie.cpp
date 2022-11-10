@@ -17,5 +17,5 @@
 
 	Zombie::~Zombie()
 	{
-
+		std::cout << name << " is dead..." << std::endl;
 	}

@@ -1,7 +1,7 @@
 NAME = zombie
 GCC = clang++
 GCCFLAGS = -Wall -Wextra -Werror
-SRCS = main.cpp
+SRCS = main.cpp newZombie.cpp Zombie.cpp randomChump.cpp
 
 $(NAME): $(SRCS)
 	$(GCC) $(SRCS) $(GCCFLAGS) -o $(NAME)
