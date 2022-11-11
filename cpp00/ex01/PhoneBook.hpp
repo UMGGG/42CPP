@@ -9,12 +9,12 @@ class PhoneBook
 			Contact	contacts[8];
 			int		idx;
 			int		count;
+			std::string get_short_string(std::string str);
+			void show_contact(std::string idx);
 	public:
 			PhoneBook();
 			void add_contact();
 			void show_contact();
-			void show_contact(std::string idx);
-			std::string get_short_string(std::string str);
 			~PhoneBook();
 };
 

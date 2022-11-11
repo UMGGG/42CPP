@@ -1,7 +1,7 @@
 NAME = zombie
 GCC = c++
-GCCFLAGS = -Wall -Wextra -Werror
-SRCS = main.cpp newZombie.cpp Zombie.cpp randomChump.cpp -std=c++98
+GCCFLAGS = -Wall -Wextra -Werror -std=c++98
+SRCS = main.cpp Zombie.cpp zombieHorde.cpp
 
 $(NAME): $(SRCS)
 	$(GCC) $(SRCS) $(GCCFLAGS) -o $(NAME)
