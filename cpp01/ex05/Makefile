@@ -1,7 +1,7 @@
 NAME = harl
 GCC = c++
 GCCFLAGS = -Wall -Wextra -Werror -std=c++98
-SRCS = main.cpp
+SRCS = main.cpp Harl.cpp
 
 $(NAME): $(SRCS)
 	$(GCC) $(SRCS) $(GCCFLAGS) -o $(NAME)

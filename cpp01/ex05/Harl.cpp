@@ -28,7 +28,16 @@ void Harl::error(void)
 void Harl::complain(std::string level)
 {
 	std::string levels[4] = {"DEBUG", "INFO", "WARNING", "ERROR"};
-	void (Harl::*fnptr[4])(void) = {&Harl::debug, &Harl::info, &Harl::warning &Harl::error};
+	void (Harl::*fnptr[4])(void);
+	*fnptr[0] = &Harl::debug;
+	*fnptr[1] = &Harl::info;
+	*fnptr[2] = &Harl::warning;
+	*fnptr[3] = &Harl::error;
+	for(int i = 0 ; i < 4 ; i++)
+	{
+		if (level == levels[i])
+			*fnptr[i]();
+	}
 }
 
 Harl::~Harl()

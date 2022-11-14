@@ -4,6 +4,12 @@
 # include <iostream>
 # include <string>
 
+# define DEBUG 0
+# define INFO 1
+# define WARNING 2
+# define ERROR 3
+# define TOTAL_NUM_OF_LEVEL 4
+
 class Harl
 {
 	private:
