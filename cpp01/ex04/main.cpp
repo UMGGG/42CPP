@@ -39,7 +39,6 @@ int main(int argc, char **argv)
 	std::ifstream readfile;
 	std::ofstream writefile;
 	std::string::size_type n;
-	char c;
 
 	if (check_arg(argc, argv))
 		return(1);
@@ -52,8 +51,8 @@ int main(int argc, char **argv)
 	}
 	while(!readfile.eof())
 	{
-		readfile.get(c);
-		str = str + c;
+		std::getline(readfile, savestr);
+		str = str + savestr + "\n";
 	}
 	readfile.close();
 	writefile.open((filename + ".replace"));
