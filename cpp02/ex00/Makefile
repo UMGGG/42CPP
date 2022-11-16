@@ -1,7 +1,7 @@
-NAME = harlfilter
+NAME = Fixed
 GCC = c++
 GCCFLAGS = -Wall -Wextra -Werror -std=c++98
-SRCS = main.cpp
+SRCS = main.cpp Fixed.cpp
 
 $(NAME): $(SRCS)
 	$(GCC) $(SRCS) $(GCCFLAGS) -o $(NAME)
