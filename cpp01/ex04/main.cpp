@@ -52,7 +52,9 @@ int main(int argc, char **argv)
 	while(!readfile.eof())
 	{
 		std::getline(readfile, savestr);
-		str = str + savestr + "\n";
+		str = str + savestr;
+		if(!readfile.eof())
+			str = str + "\n";
 	}
 	readfile.close();
 	writefile.open((filename + ".replace"));
