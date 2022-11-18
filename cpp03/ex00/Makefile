@@ -1,7 +1,7 @@
-NAME = Fixed
+NAME = ClapTrap
 GCC = c++
 GCCFLAGS = -Wall -Wextra -Werror -std=c++98 -pedantic
-SRCS = main.cpp Fixed.cpp
+SRCS = main.cpp ClapTrap.cpp
 
 $(NAME): $(SRCS)
 	$(GCC) $(SRCS) $(GCCFLAGS) -o $(NAME)
