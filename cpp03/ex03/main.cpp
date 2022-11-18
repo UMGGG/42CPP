@@ -8,8 +8,6 @@ int main()
 	FragTrap D("D");
 	DiamondTrap E("E");
 
-
-
 	A.attack("B");
 	B.takeDamage(5);
 	B.beRepaired(2);
@@ -31,4 +29,5 @@ int main()
 	D.highFivesGuys();
 	E.attack("A");
 	E.whoAmI();
+	E.attack("D");
 }

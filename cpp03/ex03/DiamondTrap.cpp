@@ -4,6 +4,7 @@ DiamondTrap::DiamondTrap(): name(ClapTrap::name)
 {
 	ClapTrap::name = name + "_clap_name";
 	std::cout << "DIA "<<this->name << "\'s Default constructor called" << std::endl;
+	this->name = "defaultDIA";
 	this->Attack_damage = FragTrap::Attack_damage;
 	this->Hit_points = FragTrap::Hit_points;
 	this->Energy_points = ScavTrap::Energy_points;
@@ -12,6 +13,7 @@ DiamondTrap::DiamondTrap(): name(ClapTrap::name)
 DiamondTrap::DiamondTrap(std::string name)
 {
 	ClapTrap::name = name + "_clap_name";
+	this->name = name;
 	std::cout << "DIA "<<this->name << "\'s String constructor called" << std::endl;
 	this->Attack_damage = FragTrap::Attack_damage;
 	this->Hit_points = FragTrap::Hit_points;
@@ -34,8 +36,8 @@ void::DiamondTrap::attack(const std::string &target)
 
 void::DiamondTrap::whoAmI()
 {
-	std::cout << "DIA " << this->name << std::endl;
-	std::cout << "CLAPTRAP " << ClapTrap::name << std::endl;
+	std::cout << "DIA name is " << this->name << std::endl;
+	std::cout << "CLAPTRAP name is " << ClapTrap::name << std::endl;
 }
 
 DiamondTrap::~DiamondTrap()
