@@ -3,19 +3,19 @@
 ClapTrap::ClapTrap()
 {
 	this->name = "default";
-	std::cout << this->name << "\'s Default Constructor called" << std::endl;
 	this->Attack_damage = 0;
 	this->Energy_points = 10;
 	this->Hit_points = 10;
+	std::cout << this->name << "\'s Default Constructor called" << std::endl;
 }
 
 ClapTrap::ClapTrap(std::string name)
 {
 	this->name = name;
-	std::cout << this->name << "\'s String constructor called" << std::endl;
 	this->Attack_damage = 0;
 	this->Energy_points = 10;
 	this->Hit_points = 10;
+	std::cout << this->name << "\'s String constructor called" << std::endl;
 }
 
 ClapTrap &ClapTrap::operator=(const ClapTrap &claptrap)
