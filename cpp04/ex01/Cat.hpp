@@ -6,9 +6,10 @@
 
 class Cat : public Animal
 {
+	private:
+			Brain *cat_brain;
 	protected:
 			std::string type;
-			Brain *cat_brain;
 	public:
 			Cat();
 			Cat(const Cat &cat);
