@@ -7,15 +7,15 @@ WrongAnimal::WrongAnimal()
 
 WrongAnimal::WrongAnimal(const WrongAnimal &wronganimal)
 {
-	this->type = wronganimal.type;
 	std::cout << "WrongAnimal's Copy constructor called" << std::endl;
+	*this = wronganimal;
 }
 
 WrongAnimal &WrongAnimal::operator=(const WrongAnimal &wronganimal)
 {
+	std::cout << "WrongAnimal's Copy operator called" << std::endl;
 	if (this != &wronganimal)
 		this->type = wronganimal.type;
-	std::cout << "WrongAnimal's Copy operator called" << std::endl;
 	return (*this);
 }
 

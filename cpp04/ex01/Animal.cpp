@@ -7,15 +7,15 @@ Animal::Animal()
 
 Animal::Animal(const Animal &animal)
 {
-	this->type = animal.type;
 	std::cout << "Animal's Copy constructor called" << std::endl;
+	*this = animal;
 }
 
 Animal &Animal::operator=(const Animal &animal)
 {
+	std::cout << "Animal's Copy operator called" << std::endl;
 	if (this != &animal)
 		this->type = animal.type;
-	std::cout << "Animal's Copy operator called" << std::endl;
 	return (*this);
 }
 

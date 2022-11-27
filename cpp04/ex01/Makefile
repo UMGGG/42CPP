@@ -1,7 +1,7 @@
 NAME = Animal
 CXX = c++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98 -pedantic
-SRCS = main.cpp Animal.cpp Dog.cpp Cat.cpp Brain.cpp
+SRCS = main.cpp Animal.cpp Dog.cpp Cat.cpp
 
 $(NAME): $(SRCS)
 	$(CXX) $(SRCS) $(CXXFLAGS) -o $(NAME)
