@@ -1,10 +1,10 @@
 NAME = Sed
-GCC = c++
-GCCFLAGS = -Wall -Wextra -Werror -std=c++98
+CXX = c++
+CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 SRCS = main.cpp
 
 $(NAME): $(SRCS)
-	$(GCC) $(SRCS) $(GCCFLAGS) -o $(NAME)
+	$(CXX) $(SRCS) $(CXXFLAGS) -o $(NAME)
 
 all : $(NAME)
 clean:

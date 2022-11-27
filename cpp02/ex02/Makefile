@@ -1,10 +1,10 @@
 NAME = Fixed
-GCC = c++
-GCCFLAGS = -Wall -Wextra -Werror -std=c++98 -pedantic
+CXX = c++
+CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 SRCS = main.cpp Fixed.cpp
 
 $(NAME): $(SRCS)
-	$(GCC) $(SRCS) $(GCCFLAGS) -o $(NAME)
+	$(CXX) $(SRCS) $(CXXFLAGS) -o $(NAME)
 
 all : $(NAME)
 clean:

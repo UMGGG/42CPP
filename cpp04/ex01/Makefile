@@ -1,10 +1,10 @@
 NAME = Animal
-GCC = c++
-GCCFLAGS = -Wall -Wextra -Werror -std=c++98 -pedantic
+CXX = c++
+CXXFLAGS = -Wall -Wextra -Werror -std=c++98 -pedantic
 SRCS = main.cpp Animal.cpp Dog.cpp Cat.cpp Brain.cpp
 
 $(NAME): $(SRCS)
-	$(GCC) $(SRCS) $(GCCFLAGS) -o $(NAME)
+	$(CXX) $(SRCS) $(CXXFLAGS) -o $(NAME)
 
 all : $(NAME)
 clean:
