@@ -13,21 +13,11 @@ Cat::Cat(const Cat &cat)
 	*this = cat;
 }
 
-Cat::Cat(const Brain &brain)
-{
-	std::cout << "Cat's Brain Copy constructor called" << std::endl;
-	this->type = "Cat";
-	*this->brain = brain;
-}
-
 Cat &Cat::operator=(const Cat &cat)
 {
 	std::cout << "Cat's Copy operator called" << std::endl;
-	if (this != &cat)
-	{
-		this->type = cat.type;
-		this->brain = cat.brain;
-	}
+	this->type = cat.type;
+	*(this->brain) = *(cat.brain);
 	return (*this);
 }
 
@@ -45,4 +35,9 @@ Cat::~Cat()
 {
 	std::cout << "Cat's Default destructor called" << std::endl;
 	delete this->brain;
+}
+
+Brain *Cat::getBrain() const
+{
+	return (this->brain);
 }

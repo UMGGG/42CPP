@@ -13,11 +13,11 @@ class Dog : public Animal
 	public:
 			Dog();
 			Dog(const Dog &dog);
-			Dog(const Brain &brain);
 			Dog &operator=(const Dog &dog);
 			void makeSound() const;
 			std::string getType() const;
 			~Dog();
+			Brain *getBrain() const;
 };
 
 #endif
