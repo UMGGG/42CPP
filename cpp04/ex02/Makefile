@@ -1,0 +1,14 @@
+NAME = Animal
+CXX = c++
+CXXFLAGS = -Wall -Wextra -Werror -std=c++98 -pedantic
+SRCS = main.cpp Animal.cpp Dog.cpp Cat.cpp Brain.cpp
+
+$(NAME): $(SRCS)
+	$(CXX) $(SRCS) $(CXXFLAGS) -o $(NAME)
+
+all : $(NAME)
+clean:
+	rm -rf $(NAME)
+re:	clean all
+
+.PHONY: all clean re
