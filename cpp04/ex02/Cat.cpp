@@ -16,6 +16,8 @@ Cat::Cat(const Cat &cat)
 Cat &Cat::operator=(const Cat &cat)
 {
 	std::cout << "Cat's Copy operator called" << std::endl;
+	if (this == &cat)
+		return (*this);
 	this->type = cat.type;
 	if (this->brain != NULL)
 	{
