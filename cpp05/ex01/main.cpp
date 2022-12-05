@@ -1,4 +1,4 @@
-#include "Bureaucrat.hpp"
+#include "Form.hpp"
 
 int main()
 {
@@ -6,6 +6,7 @@ int main()
 	Bureaucrat *b = new Bureaucrat("asdd");
 	Bureaucrat *c = new Bureaucrat(1);
 	Bureaucrat *d = new Bureaucrat("newB", 160);
+	Form *e = new Form("zxc", 160, 120);
 	b->decGrade();
 	c->incGrade();
 	c->decGrade();
@@ -17,5 +18,6 @@ int main()
 	delete b;
 	delete c;
 	delete d;
+	delete e;
 	return (0);
 }

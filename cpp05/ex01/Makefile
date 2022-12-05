@@ -1,7 +1,7 @@
-NAME = ex00
+NAME = ex01
 CXX = c++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98 -pedantic
-SRCS = main.cpp Bureaucrat.cpp
+SRCS = main.cpp Bureaucrat.cpp Form.cpp
 
 $(NAME): $(SRCS)
 	$(CXX) $(SRCS) $(CXXFLAGS) -o $(NAME)

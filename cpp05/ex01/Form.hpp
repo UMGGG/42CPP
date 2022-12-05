@@ -2,6 +2,7 @@
 # define FORM_HPP
 
 #include <iostream>
+#include "Bureaucrat.hpp"
 
 class Form
 {
@@ -10,8 +11,6 @@ class Form
 			bool is_signed;
 			const int sign_grade;
 			const int execute_grade;
-			void checkSignGrade(int si_gr);
-			void checkExecuteGrade(int ex_gr);
 	public:
 			Form();
 			Form(const Form &f);
@@ -22,8 +21,9 @@ class Form
 			~Form();
 			const std::string getName() const;
 			bool getIsSigned() const;
-			const int getSignGrade() const;
-			const int getExecuteGrade() const;
+			int getSignGrade() const;
+			int getExecuteGrade() const;
+			void besigned(Bureaucrat &b); // 만들어야함
 
 	class GradeTooHighException : public std::exception
 	{
