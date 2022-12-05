@@ -22,6 +22,7 @@ class Bureaucrat
 			int getGrade() const;
 			void incGrade();
 			void decGrade();
+
 	class GradeTooHighException : public std::exception
 	{
 		public:
