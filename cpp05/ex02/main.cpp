@@ -44,9 +44,13 @@ int main()
 		Form *e = NULL;
 		try
 		{
-			e = new Form(190, 100);
+			e = new Form(190, 0); // throw가 생기기때문에 저장공간이 할당되지않고 catch로 빠져나옴
 		}
-		catch(Form::GradeTooLowException &e) // 스택을 자동으로 회수해줌
+		catch(Form::GradeTooLowException &e)
+		{
+			std::cerr << "Form created fail "<< e.what() << '\n';
+		}
+		catch(Form::GradeTooHighException &e)
 		{
 			std::cerr << "Form created fail "<< e.what() << '\n';
 		}
