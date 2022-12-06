@@ -1,4 +1,4 @@
-#include "Form.hpp"
+#include "AForm.hpp"
 
 	void checkGrade(int gr, int gr2)
 	{
