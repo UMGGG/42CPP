@@ -2,22 +2,48 @@
 
 int main()
 {
-	Bureaucrat *a = new Bureaucrat();
-	Bureaucrat *b = new Bureaucrat("asdd");
-	Bureaucrat *c = new Bureaucrat(1);
-	Bureaucrat *d = new Bureaucrat("newB", 160);
-	Form *e = new Form("zxc", 160, 120);
-	b->decGrade();
-	c->incGrade();
-	c->decGrade();
-	std::cout << a << std::endl;
-	std::cout << b << std::endl;
-	std::cout << c << std::endl;
-	std::cout << d << std::endl;
-	delete a;
-	delete b;
-	delete c;
-	delete d;
-	delete e;
+	{
+		Bureaucrat *c = new Bureaucrat("Jae", 1);
+		Form *e = NULL;
+		try
+		{
+			e = new Form("zxc", 120, 110);
+		}
+		catch(Form::GradeTooHighException &e)
+		{
+			std::cerr << "new Form's " << e.what() << '\n';
+		}
+		catch(Form::GradeTooLowException &e)
+		{
+			std::cerr << "new Form's " << e.what() << '\n';
+		}
+		try
+		{
+			e->besigned(*c);
+		}
+		catch(Form::GradeTooLowException &e)
+		{
+			std::cerr << e.what() << '\n';
+		}
+		e->besigned(*c);
+		std::cout << e << std::endl;
+		delete c;
+		delete e;
+	}
+	std::cout << "------------------------------------------------------------------------------" << std::endl;
+	{
+		Bureaucrat *c = new Bureaucrat();
+		Form *e = new Form("dkdk", 110, 100);
+		try
+		{
+			e->besigned(*c);
+		}
+		catch(Form::GradeTooLowException &e)
+		{
+			std::cerr << e.what() << '\n';
+		}
+		delete c;
+		delete e;
+	}
 	return (0);
 }

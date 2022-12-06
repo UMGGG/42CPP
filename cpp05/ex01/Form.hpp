@@ -23,7 +23,7 @@ class Form
 			bool getIsSigned() const;
 			int getSignGrade() const;
 			int getExecuteGrade() const;
-			void besigned(Bureaucrat &b); // 만들어야함
+			void besigned(Bureaucrat &b);
 
 	class GradeTooHighException : public std::exception
 	{

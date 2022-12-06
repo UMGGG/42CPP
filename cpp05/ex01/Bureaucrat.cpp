@@ -111,6 +111,17 @@ void Bureaucrat::decGrade()
 	}
 }
 
+void Bureaucrat::signForm(std::string form_name, int i)
+{
+	if (i == 1)
+		std::cout << this->getName() << " signed " << form_name << std::endl;
+	else if (i == 2)
+		std::cout << this->getName() << " couldn’t sign " << form_name << " because form already signed"<<std::endl;
+	else if (i == 3)
+		std::cout << this->getName() << " couldn’t sign " << form_name << " because ";
+
+}
+
 const char* Bureaucrat::GradeTooLowException::what(void) const throw()
 {
 	return ("Grade too low");
