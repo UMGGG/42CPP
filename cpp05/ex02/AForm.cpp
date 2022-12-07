@@ -3,74 +3,74 @@
 	void checkGrade(int gr, int gr2)
 	{
 		if (gr > 150 || gr2 > 150)
-			throw Form::GradeTooLowException();
+			throw AForm::GradeTooLowException();
 		else if (gr < 1 || gr2 < 1)
-			throw Form::GradeTooHighException();
+			throw AForm::GradeTooHighException();
 	}
 
-	Form::Form() : name("default"), is_signed(false), sign_grade(150), execute_grade(150)
+	AForm::AForm() : name("default"), is_signed(false), sign_grade(150), execute_grade(150)
 	{
-		std::cout << "Form's default constructor called" << std::endl;
+		std::cout << "AForm's default constructor called" << std::endl;
 	}
 
-	Form::Form(const Form &f) : name(f.getName() + "_copy"), is_signed(false), sign_grade(f.getSignGrade()), execute_grade(f.getExecuteGrade())
+	AForm::AForm(const AForm &f) : name(f.getName() + "_copy"), is_signed(false), sign_grade(f.getSignGrade()), execute_grade(f.getExecuteGrade())
 	{
-		std::cout << "Form's copy constructor called" << std::endl;
+		std::cout << "AForm's copy constructor called" << std::endl;
 	}
 
-	Form::Form(std::string name_str) : name(name_str), is_signed(false), sign_grade(150), execute_grade(150)
+	AForm::AForm(std::string name_str) : name(name_str), is_signed(false), sign_grade(150), execute_grade(150)
 	{
-		std::cout << "Form's name constructor called" << std::endl;
+		std::cout << "AForm's name constructor called" << std::endl;
 	}
 
-	Form::Form(int si_gr, int ex_gr) : name("default"), is_signed(false), sign_grade(si_gr), execute_grade(ex_gr)
+	AForm::AForm(int si_gr, int ex_gr) : name("default"), is_signed(false), sign_grade(si_gr), execute_grade(ex_gr)
 	{
-		std::cout << "Form's grade constructor called" << std::endl;
+		std::cout << "AForm's grade constructor called" << std::endl;
 		// try
 		// {
 			checkGrade(si_gr, ex_gr);
 		// }
-		// catch(Form::GradeTooLowException &e)
+		// catch(AForm::GradeTooLowException &e)
 		// {
-		// 	std::cerr << "Form's grade set wrong " << e.what() << '\n';
+		// 	std::cerr << "AForm's grade set wrong " << e.what() << '\n';
 		// }
-		// catch(Form::GradeTooHighException &e)
+		// catch(AForm::GradeTooHighException &e)
 		// {
-		// 	std::cerr << "Form's grade set wrong " << e.what() << '\n';
+		// 	std::cerr << "AForm's grade set wrong " << e.what() << '\n';
 		// }
 	}
 
-	Form::Form(std::string name_str, int si_gr, int ex_gr) : name(name_str), is_signed(false), sign_grade(si_gr), execute_grade(ex_gr)
+	AForm::AForm(std::string name_str, int si_gr, int ex_gr) : name(name_str), is_signed(false), sign_grade(si_gr), execute_grade(ex_gr)
 	{
-		std::cout << "Form's name, grade constructor called" << std::endl;
+		std::cout << "AForm's name, grade constructor called" << std::endl;
 		// try
 		// {
 			checkGrade(si_gr, ex_gr);
 		// }
-		// catch(Form::GradeTooLowException &e)
+		// catch(AForm::GradeTooLowException &e)
 		// {
-		// 	std::cerr << "Form's grade set wrong " << e.what() << '\n';
+		// 	std::cerr << "AForm's grade set wrong " << e.what() << '\n';
 		// }
-		// catch(Form::GradeTooHighException &e)
+		// catch(AForm::GradeTooHighException &e)
 		// {
-		// 	std::cerr << "Form's grade set wrong " << e.what() << '\n';
+		// 	std::cerr << "AForm's grade set wrong " << e.what() << '\n';
 		// }
 	}
 
-	Form &Form::operator=(const Form &f)
+	AForm &AForm::operator=(const AForm &f)
 	{
-		std::cout << "Form's copy operator called" << std::endl;
+		std::cout << "AForm's copy operator called" << std::endl;
 		if (this == &f)
 			return (*this);
 		this->is_signed = f.getIsSigned();
 		return (*this);
 	}
-	Form::~Form()
+	AForm::~AForm()
 	{
-		std::cout << "Form's default destructor called" << std::endl;
+		std::cout << "AForm's default destructor called" << std::endl;
 	}
 
-	void Form::besigned(Bureaucrat &b)
+	void AForm::besigned(Bureaucrat &b)
 	{
 		if (b.getGrade() <= this->getSignGrade() && this->getIsSigned() == false)
 		{
@@ -84,41 +84,41 @@
 		else
 		{
 			b.signForm(this->getName(), 3);
-			throw Form::GradeTooLowException();
+			throw AForm::GradeTooLowException();
 		}
 	}
 
-	int Form::getSignGrade() const
+	int AForm::getSignGrade() const
 	{
 		return (this->sign_grade);
 	}
 
-	int Form::getExecuteGrade() const
+	int AForm::getExecuteGrade() const
 	{
 		return (this->execute_grade);
 	}
 
-	bool Form::getIsSigned() const
+	bool AForm::getIsSigned() const
 	{
 		return (this->is_signed);
 	}
 
-	const std::string Form::getName() const
+	const std::string AForm::getName() const
 	{
 		return (this->name);
 	}
 
-	const char* Form::GradeTooLowException::what(void) const throw()
+	const char* AForm::GradeTooLowException::what(void) const throw()
 	{
 		return ("Grade too low");
 	}
 
-	const char* Form::GradeTooHighException::what(void) const throw()
+	const char* AForm::GradeTooHighException::what(void) const throw()
 	{
 		return ("Grade too high");
 	}
 
-	std::ostream &operator<<(std::ostream &out, Form *a)
+	std::ostream &operator<<(std::ostream &out, AForm *a)
 	{
 		out << "Name: " << a->getName() << std::boolalpha << ", Signed: "<< a->getIsSigned() << ", SignGrade: "<< a->getSignGrade() << ", ExecuteGrade: "<< a->getExecuteGrade();
 		return (out);
