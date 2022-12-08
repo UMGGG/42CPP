@@ -4,7 +4,7 @@
 #include <iostream>
 #include "Bureaucrat.hpp"
 
-class Form
+class AForm
 {
 	private:
 			const std::string name;
@@ -12,13 +12,13 @@ class Form
 			const int sign_grade;
 			const int execute_grade;
 	public:
-			Form();
-			Form(const Form &f);
-			Form(std::string name_str);
-			Form(int si_gr, int ex_gr);
-			Form(std::string name_str, int si_gr, int ex_gr);
-			Form &operator=(const Form &f);
-			~Form();
+			AForm();
+			AForm(const AForm &f);
+			AForm(std::string name_str);
+			AForm(int si_gr, int ex_gr);
+			AForm(std::string name_str, int si_gr, int ex_gr);
+			AForm &operator=(const AForm &f);
+			virtual ~AForm();
 			const std::string getName() const;
 			bool getIsSigned() const;
 			int getSignGrade() const;
@@ -39,6 +39,6 @@ class Form
 	};
 };
 
-std::ostream &operator<<(std::ostream &out, Form *a);
+std::ostream &operator<<(std::ostream &out, AForm *a);
 
 #endif

@@ -25,3 +25,16 @@ std::string ShrubberyCreationForm::getTarget() const
 {
 	return (this->target);
 }
+
+void ShrubberyCreationForm::execute(Bureaucrat const & executor)const
+{
+	std::cout << executor.getName() << "execute" << std::endl;
+}
+
+ShrubberyCreationForm &ShrubberyCreationForm::operator=(const ShrubberyCreationForm &f)
+{
+	std::cout << "ShrubberyCreationForm's copy operator called" << std::endl;
+	if (this == &f)
+		return (*this);
+	return (*this);
+}
