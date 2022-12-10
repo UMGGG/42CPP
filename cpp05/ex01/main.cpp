@@ -18,8 +18,9 @@ int main()
 			std::cerr << "new Form's " << e.what() << '\n';
 		}
 		std::cout << e << std::endl;
-		e->besigned(*c);
-		e->besigned(*c);
+		c->signForm(*e);
+		c->signForm(*e);
+		std::cout << c << std::endl;
 		std::cout << e << std::endl;
 		delete c;
 		delete e;
@@ -30,7 +31,7 @@ int main()
 		Form *e = new Form(110, 100);
 		try
 		{
-			e->besigned(*c);
+			c->signForm(*e);
 		}
 		catch(Form::GradeTooLowException &e)
 		{
@@ -57,6 +58,5 @@ int main()
 		if (e != NULL)
 			delete e;
 	}
-	system("leaks ex01");
 	return (0);
 }

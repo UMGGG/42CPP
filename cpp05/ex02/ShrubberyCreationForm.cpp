@@ -28,7 +28,37 @@ std::string ShrubberyCreationForm::getTarget() const
 
 void ShrubberyCreationForm::execute(Bureaucrat const & executor)const
 {
-	std::cout << executor.getName() << "execute" << std::endl;
+	if(this->getIsSigned() == false)
+	{
+		std::cout << "Execute Form failed because ";
+		throw AForm::FormNeedSignException();
+	}
+	else if(this->getExecuteGrade() < executor.getGrade())
+	{
+		std::cout << "Execute Form failed because ";
+		throw AForm::GradeTooLowException();
+	}
+	else
+	{
+		std::cout << executor.getName() << " executed " << this->getName() << std::endl;
+		std::ofstream writefile;
+		std::string a = "       ###\n";
+		a += "      #o###\n";
+		a += "    #####o###\n";
+		a += "   #o#\\#|#/###\n";
+		a += "    ###\\|/#o#\n";
+		a += "     # }|{  #\n";
+		a += "       }|{\n";
+		writefile.open((this->getTarget() + "_shrubbery"));
+		if (writefile.fail())
+		{
+			std::cout << "can't make file \""<< this->getTarget() + "_shrubbery\"" << std::endl;
+			return ;
+		}
+		std::cout << executor.getName() << std::endl;
+		writefile.write(a.c_str(), a.length());
+		writefile.close();
+	}
 }
 
 ShrubberyCreationForm &ShrubberyCreationForm::operator=(const ShrubberyCreationForm &f)

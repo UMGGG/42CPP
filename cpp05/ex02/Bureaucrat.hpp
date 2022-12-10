@@ -3,7 +3,8 @@
 
 # include <iostream>
 # include <exception>
-# include <AForm.hpp>
+
+class AForm;
 
 class Bureaucrat
 {
@@ -23,7 +24,7 @@ class Bureaucrat
 			int getGrade() const;
 			void incGrade();
 			void decGrade();
-			void signForm(std::string form_name, int i);
+			void signForm(AForm &form);
 			void executeForm(AForm const &form);
 
 	class GradeTooHighException : public std::exception

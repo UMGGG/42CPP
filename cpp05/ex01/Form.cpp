@@ -70,20 +70,20 @@
 		std::cout << "Form's default destructor called" << std::endl;
 	}
 
-	void Form::besigned(Bureaucrat &b)
+	void Form::beSigned(Bureaucrat &b)
 	{
 		if (b.getGrade() <= this->getSignGrade() && this->getIsSigned() == false)
 		{
+			std::cout << b.getName() << " signed " << this->getName() << std::endl;
 			this->is_signed = true;
-			b.signForm(this->getName(), 1);
 		}
 		else if (this->getIsSigned() == true)
 		{
-			b.signForm(this->getName(), 2);
+			std::cout << b.getName() << " couldn’t sign " << this->getName() << " because form already signed"<<std::endl;
 		}
 		else
 		{
-			b.signForm(this->getName(), 3);
+			std::cout << b.getName() << " couldn’t sign " << this->getName() << " because ";
 			throw Form::GradeTooLowException();
 		}
 	}

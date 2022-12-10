@@ -1,4 +1,4 @@
-#include "Bureaucrat.hpp"
+#include "Form.hpp"
 
 Bureaucrat::Bureaucrat() : name("Default"), grade(150)
 {
@@ -111,15 +111,9 @@ void Bureaucrat::decGrade()
 	}
 }
 
-void Bureaucrat::signForm(std::string form_name, int i)
+void Bureaucrat::signForm(Form &form)
 {
-	if (i == 1)
-		std::cout << this->getName() << " signed " << form_name << std::endl;
-	else if (i == 2)
-		std::cout << this->getName() << " couldn’t sign " << form_name << " because form already signed"<<std::endl;
-	else if (i == 3)
-		std::cout << this->getName() << " couldn’t sign " << form_name << " because ";
-
+	form.beSigned(*this);
 }
 
 const char* Bureaucrat::GradeTooLowException::what(void) const throw()

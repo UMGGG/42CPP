@@ -28,7 +28,22 @@ std::string PresidentialPardonForm::getTarget() const
 
 void PresidentialPardonForm::execute(Bureaucrat const & executor)const
 {
-	std::cout << executor.getName() << "execute" << std::endl;
+	if(this->getIsSigned() == false)
+	{
+		std::cout << "Execute Form failed because ";
+		throw AForm::FormNeedSignException();
+	}
+	else if(this->getExecuteGrade() < executor.getGrade())
+	{
+		std::cout << "Execute Form failed because ";
+		throw AForm::GradeTooLowException();
+	}
+	else
+	{
+		std::cout << executor.getName() << " executed " << this->getName() << std::endl;
+		std::cout << this->getTarget() << " has been pardoned by Zaphod Beeblebrox" << std::endl;
+		std::cout << executor.getName() << std::endl;
+	}
 }
 
 PresidentialPardonForm &PresidentialPardonForm::operator=(const PresidentialPardonForm &f)

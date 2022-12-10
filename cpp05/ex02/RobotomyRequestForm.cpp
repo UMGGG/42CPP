@@ -28,7 +28,22 @@ std::string RobotomyRequestForm::getTarget() const
 
 void RobotomyRequestForm::execute(Bureaucrat const & executor)const
 {
-	std::cout << executor.getName() << "execute" << std::endl;
+	if(this->getIsSigned() == false)
+	{
+		std::cout << "Execute Form failed because ";
+		throw AForm::FormNeedSignException();
+	}
+	else if(this->getExecuteGrade() < executor.getGrade())
+	{
+		std::cout << "Execute Form failed because ";
+		throw AForm::GradeTooLowException();
+	}
+	else
+	{
+		std::cout << executor.getName() << " executed " << this->getName() << std::endl;
+		std::cout << "drrrrrrrrrrrrrrrrrrrrrrrrrr" << std::endl;
+		std::cout << executor.getName() << std::endl;
+	}
 }
 
 RobotomyRequestForm &RobotomyRequestForm::operator=(const RobotomyRequestForm &f)
