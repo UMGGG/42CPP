@@ -19,12 +19,8 @@ Cat &Cat::operator=(const Cat &cat)
 	if (this == &cat)
 		return (*this);
 	this->type = cat.type;
-	if (this->brain != NULL)
-	{
-		delete this->brain;
-		this->brain = new Brain();
-	}
-	*(this->brain) = *(cat.brain);
+	this->brain = new Brain();
+	*this->brain = *cat.brain;
 	return (*this);
 }
 

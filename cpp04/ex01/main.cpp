@@ -34,7 +34,17 @@ int main()
 	delete k;
 	std:: cout << "q's ideas : "  << q->getBrain()->getIdeas(0) << std::endl;
 	delete q;
-
+	std::cout << "------------Deep Copy Test2------------" << std::endl;
+	Dog *c = new Dog();
+	c->getBrain()->setAllIdeas("C NEW IDEAS");
+	Dog *d = new Dog(*c);
+	std::cout << "c : " << c->getBrain()->getIdeas(0) << std::endl;
+	std::cout << "d : " << d->getBrain()->getIdeas(0) << std::endl;
+	c->getBrain()->setIdeas("asd", 0);
+	std::cout << "c : " << c->getBrain()->getIdeas(0) << std::endl;
+	std::cout << "d : " << d->getBrain()->getIdeas(0) << std::endl;
+	delete c;
+	delete d;
 	system("leaks Animal");
 	return 0;
 }

@@ -8,8 +8,6 @@ class Dog : public Animal
 {
 	private:
 			Brain *brain;
-	protected:
-			std::string type;
 	public:
 			Dog();
 			Dog(const Dog &dog);
