@@ -1,6 +1,6 @@
 #include "ScavTrap.hpp"
 
-ScavTrap::ScavTrap()
+ScavTrap::ScavTrap(): ClapTrap()
 {
 	std::cout << "SCAV "<<this->name << "\'s Default constructor called" << std::endl;
 	this->Attack_damage = 20;
@@ -8,18 +8,16 @@ ScavTrap::ScavTrap()
 	this->Hit_points = 100;
 }
 
-ScavTrap::ScavTrap(std::string name)
+ScavTrap::ScavTrap(std::string name): ClapTrap(name)
 {
-	this->name = name;
 	std::cout << "SCAV "<<this->name << "\'s String constructor called" << std::endl;
 	this->Attack_damage = 20;
 	this->Energy_points = 50;
 	this->Hit_points = 100;
 }
 
-ScavTrap::ScavTrap(const ScavTrap &scavtrap)
+ScavTrap::ScavTrap(const ScavTrap &scavtrap): ClapTrap(scavtrap)
 {
-	*this = scavtrap;
 	std::cout <<"SCAV "<< this->name << "\'s Copy constructor called" << std::endl;
 }
 
