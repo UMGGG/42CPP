@@ -7,6 +7,7 @@ int main()
  	const Animal* i = new Cat();
  	delete j;//should not create a leak
  	delete i;
+	std::cout << "--------------------------------------------------------------" << std::endl;
  	Animal	*a[4];
 	for(int i=0; i<4; i++)
 	{
