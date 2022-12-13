@@ -5,18 +5,7 @@ int main()
 	{
 		Bureaucrat *c = new Bureaucrat("Jae", 1);
 		Form *e = NULL;
-		try
-		{
-			e = new Form("zxc", 120, 110);
-		}
-		catch(Form::GradeTooHighException &e)
-		{
-			std::cerr << "new Form's " << e.what() << '\n';
-		}
-		catch(Form::GradeTooLowException &e)
-		{
-			std::cerr << "new Form's " << e.what() << '\n';
-		}
+		e = new Form("zxc", 120, 110);
 		std::cout << e << std::endl;
 		c->signForm(*e);
 		c->signForm(*e);
@@ -58,5 +47,6 @@ int main()
 		if (e != NULL)
 			delete e;
 	}
+
 	return (0);
 }
