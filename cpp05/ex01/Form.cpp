@@ -34,7 +34,7 @@
 		// {
 		// 	std::cerr << "Form's grade set wrong " << e.what() << '\n';
 		// }
-		// catch(Form::GradeTooHighException &e)
+		// catch(std::execption &e)
 		// {
 		// 	std::cerr << "Form's grade set wrong " << e.what() << '\n';
 		// }

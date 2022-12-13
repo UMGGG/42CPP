@@ -49,7 +49,7 @@ void ShrubberyCreationForm::execute(Bureaucrat const & executor)const
 		a += "    ###\\|/#o#\n";
 		a += "     # }|{  #\n";
 		a += "       }|{\n";
-		writefile.open((this->getTarget() + "_shrubbery"));
+		writefile.open((this->getTarget() + "_shrubbery")); // C11버젼이니 수정, c_str로 수정해주기
 		if (writefile.fail())
 		{
 			std::cout << "can't make file \""<< this->getTarget() + "_shrubbery\"" << std::endl;
