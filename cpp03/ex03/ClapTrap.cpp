@@ -2,7 +2,6 @@
 
 ClapTrap::ClapTrap()
 {
-	this->name = "default";
 	this->Attack_damage = 0;
 	this->Energy_points = 10;
 	this->Hit_points = 10;

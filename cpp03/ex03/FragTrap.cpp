@@ -2,7 +2,6 @@
 
 FragTrap::FragTrap()
 {
-	this->name = "default FragTrap";
 	std::cout << "FRAG "<<this->name << "\'s Default constructor called" << std::endl;
 	this->Attack_damage = 30;
 	this->Energy_points = 100;

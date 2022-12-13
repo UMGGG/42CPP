@@ -2,12 +2,12 @@
 
 int main()
 {
-	DiamondTrap E("E");
-	DiamondTrap K("T");
-
-	E.attack("A");
-	E.whoAmI();
-	E.highFivesGuys();
-	E.attack("D");
-	K.attack("C");
+		DiamondTrap a;
+		DiamondTrap b("DDIA");
+		DiamondTrap c(a);
+		a.whoAmI();
+		a.attack("DDIA");
+		b.whoAmI();
+		b.attack("DDIA_clone");
+		c.whoAmI();
 }

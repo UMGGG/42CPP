@@ -2,7 +2,6 @@
 
 ScavTrap::ScavTrap()
 {
-	this->name = "default scavtrap";
 	std::cout << "SCAV "<<this->name << "\'s Default constructor called" << std::endl;
 	this->Attack_damage = 20;
 	this->Energy_points = 50;
