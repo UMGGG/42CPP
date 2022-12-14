@@ -51,5 +51,7 @@ PresidentialPardonForm &PresidentialPardonForm::operator=(const PresidentialPard
 	std::cout << "PresidentialPardonForm's copy operator called" << std::endl;
 	if (this == &f)
 		return (*this);
+	AForm::operator=(f);
+	const_cast<std::string&>(this->target) = f.getTarget();
 	return (*this);
 }

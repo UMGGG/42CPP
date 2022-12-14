@@ -47,7 +47,9 @@ int main()
 	{
 		Bureaucrat *b = new Bureaucrat("jae", 1);
 		RobotomyRequestForm *a = new RobotomyRequestForm("home");
+		RobotomyRequestForm *c = new RobotomyRequestForm(*a);
 		b->signForm(*a);
+		b->signForm(*c);
 		try
 		{
 			b->executeForm(*a);
@@ -62,6 +64,7 @@ int main()
 		}
 		delete a;
 		delete b;
+		delete c;
 	}
 	return (0);
 }

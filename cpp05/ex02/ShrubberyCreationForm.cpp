@@ -40,6 +40,8 @@ void ShrubberyCreationForm::execute(Bureaucrat const & executor)const
 	}
 	else
 	{
+		std::string filename = this->getTarget();
+		filename += "_shrubbery";
 		std::cout << executor.getName() << " executed " << this->getName() << std::endl;
 		std::ofstream writefile;
 		std::string a = "       ###\n";
@@ -49,7 +51,7 @@ void ShrubberyCreationForm::execute(Bureaucrat const & executor)const
 		a += "    ###\\|/#o#\n";
 		a += "     # }|{  #\n";
 		a += "       }|{\n";
-		writefile.open((this->getTarget() + "_shrubbery")); // C11버젼이니 수정, c_str로 수정해주기
+		writefile.open(filename.c_str());
 		if (writefile.fail())
 		{
 			std::cout << "can't make file \""<< this->getTarget() + "_shrubbery\"" << std::endl;
@@ -66,5 +68,7 @@ ShrubberyCreationForm &ShrubberyCreationForm::operator=(const ShrubberyCreationF
 	std::cout << "ShrubberyCreationForm's copy operator called" << std::endl;
 	if (this == &f)
 		return (*this);
+	AForm::operator=(f);
+	const_cast<std::string&>(this->target) = f.getTarget();
 	return (*this);
 }

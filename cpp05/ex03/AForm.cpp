@@ -63,6 +63,9 @@ AForm &AForm::operator=(const AForm &f)
 	if (this == &f)
 		return (*this);
 	this->is_signed = f.getIsSigned();
+	const_cast<std::string &>(this->name) = f.getName();
+	const_cast<int &>(this->sign_grade) = f.getSignGrade();
+	const_cast<int &>(this->execute_grade) = f.getExecuteGrade();
 	return (*this);
 }
 AForm::~AForm()
