@@ -57,7 +57,6 @@ void ShrubberyCreationForm::execute(Bureaucrat const & executor)const
 			std::cout << "can't make file \""<< this->getTarget() + "_shrubbery\"" << std::endl;
 			return ;
 		}
-		std::cout << executor.getName() << std::endl;
 		writefile.write(a.c_str(), a.length());
 		writefile.close();
 	}

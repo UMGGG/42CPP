@@ -42,7 +42,6 @@ void ShrubberyCreationForm::execute(Bureaucrat const & executor)const
 	{
 		std::string filename = this->getTarget();
 		filename += "_shrubbery";
-		std::cout << executor.getName() << " executed " << this->getName() << std::endl;
 		std::ofstream writefile;
 		std::string a = "       ###\n";
 		a += "      #o###\n";
@@ -57,7 +56,7 @@ void ShrubberyCreationForm::execute(Bureaucrat const & executor)const
 			std::cout << "can't make file \""<< this->getTarget() + "_shrubbery\"" << std::endl;
 			return ;
 		}
-		std::cout << executor.getName() << std::endl;
+		std::cout << executor.getName() << " executed " << this->getName() << std::endl;
 		writefile.write(a.c_str(), a.length());
 		writefile.close();
 	}
