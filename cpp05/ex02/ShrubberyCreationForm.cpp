@@ -30,12 +30,12 @@ void ShrubberyCreationForm::execute(Bureaucrat const & executor)const
 {
 	if(this->getIsSigned() == false)
 	{
-		std::cout << "Execute Form failed because ";
+		std::cout << "Execute Form failed because Form isn't signed" << std::endl;
 		throw AForm::FormNeedSignException();
 	}
 	else if(this->getExecuteGrade() < executor.getGrade())
 	{
-		std::cout << "Execute Form failed because ";
+		std::cout << "Execute Form failed because Grade too low" << std::endl;
 		throw AForm::GradeTooLowException();
 	}
 	else

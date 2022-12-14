@@ -48,10 +48,10 @@ int main()
 		Bureaucrat *b = new Bureaucrat("jae", 1);
 		RobotomyRequestForm *a = new RobotomyRequestForm("home");
 		RobotomyRequestForm *c = new RobotomyRequestForm(*a);
-		b->signForm(*a);
-		b->signForm(*c);
 		try
 		{
+			b->signForm(*a);
+			b->signForm(*c);
 			b->executeForm(*a);
 		}
 		catch(AForm::GradeTooLowException& e)

@@ -86,7 +86,7 @@
 		}
 		else
 		{
-			std::cout << b.getName() << " couldn’t sign " << this->getName() << " because ";
+			std::cout << b.getName() << " couldn’t sign " << this->getName() << " because Grade too low" << std::endl;
 			throw Form::GradeTooLowException();
 		}
 	}
