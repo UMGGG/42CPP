@@ -37,6 +37,7 @@ class Convertor
 		char getChar() const;
 		double getDouble() const;
 		int getInt() const;
+		int getType() const;
 		~Convertor();
 	class excep: public std::exception
 	{

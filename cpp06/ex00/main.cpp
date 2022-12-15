@@ -9,11 +9,12 @@ int main(int argc, char* argv[])
 	}
 	try
 	{
-
+		Convertor a(argv[1]);
+		std::cout << a.getType() << std::endl;
 	}
 	catch(const std::exception& e)
 	{
-		std::cerr << e.what() << '\n';
+		std::cerr  << "error!" << e.what() << '\n';
 	}
 
 }
