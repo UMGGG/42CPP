@@ -3,11 +3,20 @@
 #include <iostream>
 #include <stdlib.h>
 #include <exception>
+#include <string>
+
+# define CHAR 0
+# define INT 1
+# define FLOAT 2
+# define DOUBLE 3
+# define ERROR 4
+# define NAN_INF 5
 
 class Convertor
 {
 	private:
 		std::string _input;
+		int			_type;
 		int			_int;
 		float		_float;
 		double		_double;
@@ -20,7 +29,7 @@ class Convertor
 		int toInt();
 		Convertor();
 	public:
-		Convertor(const std::string);
+		Convertor(const std::string input);
 		Convertor(const Convertor &c);
 		Convertor &operator=(const Convertor &c);
 		std::string getInput() const;
