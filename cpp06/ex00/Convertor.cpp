@@ -10,7 +10,10 @@ void Convertor::checkInput()
 	|| this->_input[0] == '.' || this->_input[0] == 'f' )) // +,-,.,f 중 하나만 있다면 CHAR
 		this->_type = CHAR;
 	else if (this->_input.find_first_of("+-") != this->_input.find_last_of("+-"))
-		this->_type = ERROR; // +,-가 하나 이상 있다면 ERROR
+		this->_type = ERROR; // +,-가 하나 이상 있다면 ERROR +123-11
+	else if (this->_input.find_first_of("+-") != std::string::npos &&
+	this->_input.find_first_of("+-") != 0) // +,-가 존재하는데 첫 +,-가 처음에 있지않으면 ERROR 0+3123
+		this->_type = ERROR;
 	else if (this->_input.find_first_not_of("+-0987654321") == std::string::npos)
 		this->_type = INT; // +,-,숫자만 있으면 INT
 	else if (this->_input.find_first_not_of("+-0987654321.") == std::string::npos)
@@ -23,10 +26,11 @@ void Convertor::checkInput()
 	}
 	else if (this->_input.find_first_not_of("+-0987654321.f") == std::string::npos)
 	{
-		if (this->_input.find_first_of(".") != this->_input.find_last_of(".") || // .이 여러개
-		this->_input.find_first_of("f") != this->_input.find_last_of("f") || // f가 여러개
+		if (this->_input.find_first_of(".") != this->_input.find_last_of(".") || // .이 여러개0.0.0f
+		this->_input.find_first_of("f") != this->_input.find_last_of("f") || // f가 여러개 0.0ff
+		this->_input[this->_input.find_first_of(".") + 1] == 'f' || // .뒤에 f가 오는경우 0.f
 		)
-			this->_type = ERROR; // +,-,숫자,.,f 만 있지만 .이 하나가 아니면 에러
+			this->_type = ERROR;
 		this->_type = FLOAT; // +,-,숫자,.,f 만 있으면 FLOAT
 	}
 	else if (this->_input.length() == 1 &&
