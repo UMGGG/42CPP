@@ -62,6 +62,119 @@ void Convertor::checkInput()
 	}
 }
 
+void Convertor::startConvert()
+{
+	if (this->_type == CHAR)
+	{
+		this->_char = static_cast<unsigned char>(this->getInput()[0]);
+		this->_int = static_cast<int>(this->getChar());
+		this->_float = static_cast<float>(this->getChar());
+		this->_double = static_cast<double>(this->getChar());
+	}
+	else if (this->_type == INT)
+	{
+		this->_double = strtod(this->_input.c_str(), NULL);
+		this->_int = static_cast<int>(this->getDouble());
+		this->_float = static_cast<float>(this->getDouble());
+		this->_char = static_cast<unsigned char>(this->getInt());
+	}
+	else if (this->_type == FLOAT)
+	{
+		this->_double = strtod(this->_input.c_str(), NULL);
+		this->_float = static_cast<float>(this->getDouble());
+		this->_char = static_cast<unsigned char>(this->getFloat());
+		this->_int = static_cast<int>(this->getFloat());
+	}
+	else if (this->_type == DOUBLE)
+	{
+		this->_double = strtod(this->_input.c_str(), NULL);
+		this->_char = static_cast<unsigned char>(this->getDouble());
+		this->_int = static_cast<int>(this->getDouble());
+		this->_float = static_cast<float>(this->getDouble());
+	}
+	else if (this->_type == NAN_INF)
+		return ;
+	else
+		throw Convertor::excep();
+}
+
+void Convertor::printConvert()
+{
+	float float_ipart = 0.0;
+	float float_fpart = 0.0;
+	double double_ipart = 0.0;
+	double double_dpart = 0.0;
+	//CHAR
+	if (this->_type != NAN_INF && this->_double >= 0 && this->_double <= UCHAR_MAX)
+	{
+		if (isprint(this->_char))
+			std::cout << "char: " << this->_char << std::endl;
+		else
+			std::cout << "char: Non displayable" << std::endl;
+	}
+	else
+	{
+		std::cout << "char: impossible" << std::endl;
+	}
+	//INT
+	if (this->_type != NAN_INF && this->_double >= std::numeric_limits<int>::min() && this->_double <= std::numeric_limits<int>::max())
+	{
+		std::cout << "int: " << this->_int << std::endl;
+	}
+	else
+	{
+		std::cout << "int: impossible" << std::endl;
+	}
+	//FLOAT
+	if (this->_type != NAN_INF && this->_double >= std::numeric_limits<float>::min() && this->_double <= std::numeric_limits<float>::max())
+	{
+		float_fpart = modf(this->_float, &float_ipart);
+		if (float_fpart == 0.0)
+			std::cout << "float: " << this->_float << ".0f" << std::endl;
+		else
+			std::cout << "float: " << this->_float << "f" << std::endl;
+	}
+	else if (this->_type != NAN_INF)
+	{
+		std::cout << "float: impossible" << std::endl;
+	}
+	else
+	{
+		if (this->_input == "nan" || this->_input == "nanf")
+			std::cout << "float: nanf" << std::endl;
+		else if (this->_input[0] == '+')
+			std::cout << "float: +inff" << std::endl;
+		else if (this->_input[0] == '-')
+			std::cout << "float: -inff" << std::endl;
+		else
+			std::cout << "float: inff" << std::endl;
+	}
+	//DOUBLE
+	if (this->_type != NAN_INF&& this->_double >= std::numeric_limits<double>::min() && this->_double <= std::numeric_limits<double>::max())
+	{
+		double_dpart = modf(this->_double, &double_ipart);
+		if (double_dpart == 0.0)
+			std::cout << "double: " << this->_double << ".0" << std::endl;
+		else
+			std::cout << "double: " << this->_double << std::endl;
+	}
+	else if(this->_type != NAN_INF)
+	{
+		std::cout << "double: impossible" << std::endl;
+	}
+	else
+	{
+		if (this->_input == "nan" || this->_input == "nanf")
+			std::cout << "double: nan" << std::endl;
+		else if (this->_input[0] == '+')
+			std::cout << "double: +inf" << std::endl;
+		else if (this->_input[0] == '-')
+			std::cout << "double: -inf" << std::endl;
+		else
+			std::cout << "double: inf" << std::endl;
+	}
+}
+
 Convertor::Convertor()
 {
 }
@@ -69,6 +182,7 @@ Convertor::Convertor()
 Convertor::Convertor(const std::string input): _input(input)
 {
 	checkInput();
+	startConvert();
 }
 
 Convertor::Convertor(const Convertor &c): _input(c.getInput())
@@ -121,4 +235,9 @@ int Convertor::getInt() const
 int Convertor::getType() const
 {
 	return (this->_type);
+}
+
+const char* Convertor::excep::what(void) const throw()
+{
+	return ("Can't convert");
 }

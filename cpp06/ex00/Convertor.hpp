@@ -4,6 +4,8 @@
 #include <stdlib.h>
 #include <exception>
 #include <string>
+#include <limits>
+#include <math.h>
 
 # define CHAR 0
 # define INT 1
@@ -38,6 +40,7 @@ class Convertor
 		double getDouble() const;
 		int getInt() const;
 		int getType() const;
+		void printConvert();
 		~Convertor();
 	class excep: public std::exception
 	{
