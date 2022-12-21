@@ -36,7 +36,7 @@ void identify(Base& p) // 참조타입의 dynamic_cast는 타입이 맞지않을
 {
 	try
 	{
-		Base &a = dynamic_cast<A &>(p);
+		A &a = dynamic_cast<A &>(p);
 		std::cout << "ref actual type = A" << std::endl;
 		(void) a;
 		return ;
@@ -46,7 +46,7 @@ void identify(Base& p) // 참조타입의 dynamic_cast는 타입이 맞지않을
 	}
 	try
 	{
-		Base &b = dynamic_cast<B &>(p);
+		B &b = dynamic_cast<B &>(p);
 		(void) b;
 		std::cout << "ref actual type = B" << std::endl;
 		return ;
@@ -56,7 +56,7 @@ void identify(Base& p) // 참조타입의 dynamic_cast는 타입이 맞지않을
 	}
 	try
 	{
-		Base &c = dynamic_cast<C &>(p);
+		C &c = dynamic_cast<C &>(p);
 		(void) c;
 		std::cout << "ref actual type = C" << std::endl;
 		return ;
