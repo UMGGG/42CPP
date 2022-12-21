@@ -1,7 +1,32 @@
 #include "Convertor.hpp"
 
+bool    isnan_float(float f) // nan == nan은 false로 나오므로 확인 가능
+{
+    return (f != f);
+}
+
+bool    isinf_float(float f) // inf나 -inf는 무엇을 곱하든 부호만 바뀔수있고 그대로기때문에 2를곱해도 그대로면 0이거나 inf임
+{
+    return (f != 0 && f * 2 == f);
+}
+
+bool    isnan_double(double d)
+{
+    return (d != d);
+}
+
+bool    isinf_double(double d)
+{
+    return (d != 0 && d * 2 == d);
+}
+
 void Convertor::checkInput()
 {
+	if (this->_input == "NULL")
+	{
+		std::cout << "input is null ";
+		throw Convertor::excep();
+	}
 	if(this->_input == "nan" || this->_input == "nanf"
 	 || this->_input == "inf" || this->_input == "-inf" || this->_input == "+inf"
 	 || this->_input == "inff" || this->_input == "-inff" || this->_input == "+inff")
@@ -126,8 +151,8 @@ void Convertor::printConvert()
 		std::cout << "int: impossible" << std::endl;
 	}
 	//FLOAT
-	if (this->_type != NAN_INF && this->_double >= std::numeric_limits<float>::min() && this->_double <= std::numeric_limits<float>::max())
-	{
+	if (this->_type != NAN_INF && !isnan_float(this->_float) && !isinf_float(this->_float))
+	{ // 실수는 오버플로우나 언더플로우시 값이 돌지않고 inf로 변하게됨
 		float_fpart = modf(this->_float, &float_ipart);
 		if (float_fpart == 0.0)
 			std::cout << "float: " << this->_float << ".0f" << std::endl;
@@ -150,7 +175,7 @@ void Convertor::printConvert()
 			std::cout << "float: inff" << std::endl;
 	}
 	//DOUBLE
-	if (this->_type != NAN_INF&& this->_double >= std::numeric_limits<double>::min() && this->_double <= std::numeric_limits<double>::max())
+	if (this->_type != NAN_INF && !isnan_double(this->_double) && !isinf_double(this->_double))
 	{
 		double_dpart = modf(this->_double, &double_ipart);
 		if (double_dpart == 0.0)

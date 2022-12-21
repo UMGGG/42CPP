@@ -1,7 +1,7 @@
-NAME = convert
+NAME = ex01
 CXX = c++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98 -pedantic
-SRCS = main.cpp Convertor.cpp
+SRCS = main.cpp Base.cpp A.cpp B.cpp C.cpp
 
 $(NAME): $(SRCS)
 	$(CXX) $(SRCS) $(CXXFLAGS) -o $(NAME)
