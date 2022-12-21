@@ -1,4 +1,4 @@
-NAME = ex01
+NAME = ex02
 CXX = c++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98 -pedantic
 SRCS = main.cpp Base.cpp A.cpp B.cpp C.cpp

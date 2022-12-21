@@ -34,10 +34,42 @@ void identify(Base* p) // 포인터타입의 dynamic_cast는 타입이 맞지않
 
 void identify(Base& p) // 참조타입의 dynamic_cast는 타입이 맞지않을경우 bad casting exception을 throw함
 {
-
+	try
+	{
+		Base &a = dynamic_cast<A &>(p);
+		std::cout << "ref actual type = A" << std::endl;
+		(void) a;
+		return ;
+	}
+	catch(const std::exception& e)
+	{
+	}
+	try
+	{
+		Base &b = dynamic_cast<B &>(p);
+		(void) b;
+		std::cout << "ref actual type = B" << std::endl;
+		return ;
+	}
+	catch(const std::exception& e)
+	{
+	}
+	try
+	{
+		Base &c = dynamic_cast<C &>(p);
+		(void) c;
+		std::cout << "ref actual type = C" << std::endl;
+		return ;
+	}
+	catch(const std::exception& e)
+	{
+	}
 }
 
 int main()
 {
-
+	Base *a = generate();
+	identify(a);
+	identify(*a);
+	delete a;
 }
