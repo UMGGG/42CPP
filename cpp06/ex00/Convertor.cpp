@@ -130,7 +130,7 @@ void Convertor::printConvert()
 	double double_ipart = 0.0;
 	double double_dpart = 0.0;
 	//CHAR
-	if (this->_type != NAN_INF && this->_double >= 0 && this->_double <= UCHAR_MAX)
+	if (this->_type != NAN_INF && this->_double >= 0 && this->_double <= CHAR_MAX)
 	{
 		if (isprint(this->_char))
 			std::cout << "char: " << this->_char << std::endl;
