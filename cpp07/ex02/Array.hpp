@@ -9,21 +9,18 @@ class Array
 			T *_arr;
 			size_t _size;
 	public:
-			Array()
+			Array(): _arr(NULL), _size(0)
 			{
-				this->_arr = NULL;
-				this->_size = 0;
 			}
 
-			Array(unsigned int n)
+			Array(unsigned int n): _arr(NULL), _size(n)
 			{
-				this->_arr = new T[n];
-				this->_size = n;
+				if (n != 0)
+					this->_arr = new T[n];
 			}
 
-			Array(const Array &a)
+			Array(const Array &a): _arr(NULL), _size(a._size)
 			{
-				this->_arr = new T[a._size];
 				*this = a;
 			}
 
