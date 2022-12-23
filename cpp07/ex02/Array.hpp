@@ -58,6 +58,11 @@ class Array
 					return (this->_arr[n]);
 			}
 
+			const size_t size() const
+			{
+				return (this->_size);
+			}
+
 			~Array()
 			{
 				std::cout << "dest called" << std::endl;
