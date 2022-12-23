@@ -4,6 +4,8 @@
 #include <iostream>
 #include <vector>
 #include <algorithm>
+#include <ctime>
+#include <cstdlib>
 
 class Span
 {
@@ -17,9 +19,9 @@ class Span
 			Span &operator=(const Span &s);
 			~Span();
 			void addNumber(int num);
-			void addNumber(int num, int size);
-			int shortestSpan();
-			int longestSpan();
+			void addRandom(unsigned int range);
+			unsigned int shortestSpan();
+			unsigned int longestSpan();
 	class	OverSizeException : public std::exception
 	{
 		public:
