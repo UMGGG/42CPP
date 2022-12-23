@@ -3,12 +3,13 @@
 
 #include <iostream>
 #include <vector>
+#include <algorithm>
 
 class Span
 {
 	private:
-			std::vector<int> vec;
-			unsigned int size;
+			std::vector<int> _vec;
+			unsigned int _size;
 	public:
 			Span();
 			Span(unsigned int n);
@@ -16,8 +17,20 @@ class Span
 			Span &operator=(const Span &s);
 			~Span();
 			void addNumber(int num);
+			void addNumber(int num, int size);
 			int shortestSpan();
 			int longestSpan();
+	class	OverSizeException : public std::exception
+	{
+		public:
+			const char	*what() const throw();
+	};
+
+	class	NoSpanException : public std::exception
+	{
+		public:
+			const char	*what() const throw();
+	};
 };
 
 #endif
