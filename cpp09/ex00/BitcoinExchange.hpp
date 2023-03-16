@@ -10,8 +10,6 @@
 
 void	print_error_with_exit(std::string errmsg);
 double	string_to_float(const std::string& str);
-int		check_data(std::string str);
-int		check_date(std::string str);
 
 class BitcoinExchange
 {
@@ -23,7 +21,6 @@ class BitcoinExchange
 		}
 		~BitcoinExchange()
 		{
-
 		}
 		void	print_map(std::string date, float num);
 	private:
@@ -46,6 +43,8 @@ class BitcoinExchange
 		void	get_user_data_from_file(char *file_name);
 		void	get_btc_data_from_file(std::map<std::string, float> &map);
 		float	get_price(std::string date);
+		int		check_data(std::string str);
+		int		check_date(std::string str);
 };
 
 #endif

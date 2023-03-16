@@ -48,7 +48,7 @@ double string_to_float(const std::string& str)
 }
 
 
-int check_data(std::string str)
+int BitcoinExchange::check_data(std::string str)
 {
 	int i = 0;
 	while (str[i])
@@ -95,7 +95,7 @@ int check_data(std::string str)
 	return (1);
 }
 
-int	check_date(std::string str)
+int	BitcoinExchange::check_date(std::string str)
 {
 	int num;
 	std::stringstream stream;
