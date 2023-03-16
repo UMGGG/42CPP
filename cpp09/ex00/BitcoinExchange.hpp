@@ -6,10 +6,12 @@
 #include <fstream>
 #include <string>
 #include <stdlib.h>
+#include <sstream>
 
 void	print_error_with_exit(std::string errmsg);
-float	string_to_float(const std::string& str);
+double	string_to_float(const std::string& str);
 int		check_data(std::string str);
+int		check_date(std::string str);
 
 class BitcoinExchange
 {
@@ -27,15 +29,15 @@ class BitcoinExchange
 	private:
 		BitcoinExchange()
 		{
-
 		}
 		BitcoinExchange(const BitcoinExchange &c)
 		{
-			(void)c;
+			*this = c;
 		}
 		BitcoinExchange &operator=(const BitcoinExchange &c)
 		{
-			(void)c;
+			if (this != &c)
+				this->_btcdata = c._btcdata;
 			return (*this);
 		}
 
