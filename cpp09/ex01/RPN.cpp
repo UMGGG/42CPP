@@ -8,8 +8,8 @@ int print_errmsg(std::string str)
 
 int string_to_int(std::string str)
 {
-	int num = 0;
-	int sign = 1;
+	long num = 0;
+	long sign = 1;
 	size_t i = 0;
 
 	if (str[0] == '-')
@@ -27,6 +27,8 @@ int string_to_int(std::string str)
 		else
 			return (-1);
 	}
+	if (num * sign > INT_MAX || num * sign < INT_MIN)
+		return (-1);
 	return num * sign;
 }
 

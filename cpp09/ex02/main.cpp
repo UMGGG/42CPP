@@ -1,9 +1,7 @@
 #include "PmergeMe.hpp"
 
-int main(void)
+int main(int argc, char *argv[])
 {
-	std::vector<int> v = {2, 6, 8, 9, 1, 3, 7, 4};
-	std::list<int> l = {2, 6, 8, 9, 1, 3, 7, 4};
-	PmergeMe(v);
+	PmergeMe(argc, argv);
 	return (0);
 }
