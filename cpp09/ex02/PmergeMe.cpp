@@ -126,3 +126,19 @@ void PmergeMe::merge_insertion_sort_list(std::list<int>& lst)
 	lst.clear();
 	lst = left;
 }
+
+void PmergeMe::do_pmerge()
+{
+	std::cout << "Before: ";
+	PmergeMe::print_container();
+	start = clock();
+	PmergeMe::merge_insertion_sort_vec(_vec);
+	vec_time = (double)(clock() - start) / CLOCKS_PER_SEC;
+	start = clock();
+	PmergeMe::merge_insertion_sort_list(_list);
+	list_time = (double)(clock() - start) / CLOCKS_PER_SEC;
+	std::cout << "After: ";
+	PmergeMe::print_container();
+	std::cout << "Time to process a range of " << _vec.size() << " elements with std::vector : " << vec_time << " s" << std::endl;
+	std::cout << "Time to process a range of " << _list.size() << " elements with std::list : " << list_time << " s" << std::endl;
+}

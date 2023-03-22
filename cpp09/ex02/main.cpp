@@ -2,6 +2,7 @@
 
 int main(int argc, char *argv[])
 {
-	PmergeMe(argc, argv);
+	PmergeMe a(argc, argv);
+	a.do_pmerge();
 	return (0);
 }
