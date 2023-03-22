@@ -18,10 +18,20 @@ class PmergeMe
 	{
 		if (PmergeMe::check_argv(argc, argv))
 			exit(1);
+		std::cout << "Before: ";
 		PmergeMe::print_container();
+		start = clock();
 		PmergeMe::merge_insertion_sort_vec(_vec);
+		end = clock();
+		vec_time = (double)(end - start) / CLOCKS_PER_SEC;
+		start = clock();
 		PmergeMe::merge_insertion_sort_list(_list);
+		end = clock();
+		list_time = (double)(end - start) / CLOCKS_PER_SEC;
+		std::cout << "After: ";
 		PmergeMe::print_container();
+		std::cout << "Time to process a range of " << argc - 1 << " elements with std::vector : " << vec_time << " s" << std::endl;
+		std::cout << "Time to process a range of " << argc - 1 << " elements with std::list : " << list_time << " s" << std::endl;
 	}
 	~PmergeMe()
 	{
@@ -51,6 +61,10 @@ class PmergeMe
 
 	std::list<int> _list;
 	std::vector<int> _vec;
+	double list_time;
+	double vec_time;
+	clock_t start;
+	clock_t end;
 };
 
 #endif

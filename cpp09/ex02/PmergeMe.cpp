@@ -55,18 +55,11 @@ int PmergeMe::check_argv(int argc, char *argv[])
 
 void PmergeMe::print_container()
 {
-	std::cout << "vector: ";
 	std::vector<int>::iterator vec_iter = this->_vec.begin();
 	while (vec_iter != this->_vec.end())
 	{
 		std::cout << *vec_iter << " ";
 		vec_iter++;
-	}
-	std::cout << std::endl;
-	std::cout << "list: ";
-	for (std::list<int>::iterator it = _list.begin(); it != _list.end(); ++it)
-	{
-		std::cout << *it << " ";
 	}
 	std::cout << std::endl;
 }
@@ -113,7 +106,6 @@ void PmergeMe::merge_insertion_sort_list(std::list<int>& lst)
 	// 재귀적으로 왼쪽 부분 리스트와 오른쪽 부분 리스트를 정렬
 	merge_insertion_sort_list(left);
 	merge_insertion_sort_list(right);
-	// 리스트를 합병
 	std::list<int>::iterator it_left = left.begin();
 	std::list<int>::iterator it_right = right.begin();
 	// 두 리스트를 반복하며 원소들을 비교하고, 작은 값을 list1에 삽입
@@ -130,6 +122,7 @@ void PmergeMe::merge_insertion_sort_list(std::list<int>& lst)
 	// 만약 list2에 아직 원소가 남아있다면, 남은 원소를 list1의 끝에 삽입
 	if (it_right != right.end())
 		left.splice(left.end(), right, it_right, right.end());
+	// 기존 lst를 비워주고 정렬한 left를 lst에 넣어줌
 	lst.clear();
 	lst = left;
 }
