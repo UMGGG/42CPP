@@ -94,32 +94,42 @@ void PmergeMe::merge_insertion_sort_vec(std::vector<int> &vec)
 	}
 }
 
-std::list<int>::iterator get_it(int n, std::list<int>& lst)
-{
-	std::list<int>::iterator itr = lst.begin();
-	std::advance(itr, n - 1);
-	return itr;
-}
-
 void PmergeMe::merge_insertion_sort_list(std::list<int>& lst)
 {
-if (lst.size() < 2)
-	return;
-int n = lst.size();
-int step = n / 2;
-	while (step > 0)
+	// 리스트의 크기가 1 이하면 정렬 완료
+	if (lst.size() < 2)
+		return;
+	// 리스트를 두 부분 리스트로 분할
+	std::list<int> left;
+	std::list<int> right;
+	std::list<int>::iterator it = lst.begin();
+	for (std::size_t i = 0; i < lst.size() / 2; i++)
 	{
-		for (int i = step; i < n; i++)
-		{
-			int temp = vec[i];
-			int j = i - step;
-			while (j >= 0 && temp < vec[j])
-			{
-				vec[j + step] = vec[j];
-				j -= step;
-			}
-			vec[j + step] = temp;
-		}
-		step /= 2;
+		left.push_back(*it);
+		it++;
 	}
+	for (; it != lst.end(); it++)
+		right.push_back(*it);
+	// 재귀적으로 왼쪽 부분 리스트와 오른쪽 부분 리스트를 정렬
+	merge_insertion_sort_list(left);
+	merge_insertion_sort_list(right);
+	// 리스트를 합병
+	std::list<int>::iterator it_left = left.begin();
+	std::list<int>::iterator it_right = right.begin();
+	// 두 리스트를 반복하며 원소들을 비교하고, 작은 값을 list1에 삽입
+	while (it_left != left.end() && it_right != right.end())
+	{
+		if (*it_right < *it_left)
+		{
+			left.insert(it_left, *it_right);
+			++it_right;
+		}
+		else
+			++it_left;
+	}
+	// 만약 list2에 아직 원소가 남아있다면, 남은 원소를 list1의 끝에 삽입
+	if (it_right != right.end())
+		left.splice(left.end(), right, it_right, right.end());
+	lst.clear();
+	lst = left;
 }
