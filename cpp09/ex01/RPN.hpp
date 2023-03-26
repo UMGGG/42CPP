@@ -19,10 +19,6 @@ class RPN
 	}
 	~RPN()
 	{}
-	int get_result()
-	{
-		return (0);
-	}
 
 	private:
 	RPN(const RPN &c)
