@@ -62,13 +62,6 @@ void PmergeMe::print_container()
 		vec_iter++;
 	}
 	std::cout << std::endl;
-	std::deque<int>::iterator deque_iter = this->_deque.begin();
-	while (deque_iter != this->_deque.end())
-	{
-		std::cout << *deque_iter << " ";
-		deque_iter++;
-	}
-	std::cout << std::endl;
 }
 
 void merge_sort(std::vector<int>& vec, int left, int mid, int right)
@@ -237,13 +230,13 @@ void PmergeMe::do_pmerge()
 	PmergeMe::print_container();
 	start = clock();
 	PmergeMe::merge_insertion_sort_vec(_vec, 0, _vec.size() - 1, 3);
-	vec_time = (double)(clock() - start) / CLOCKS_PER_SEC;
+	vec_time = (double)(clock() - start);
 	start = clock();
 	//PmergeMe::merge_sort_list(_list);
 	PmergeMe::merge_insertion_sort_deque(_deque, 0, _deque.size() - 1, 3);
-	deque_time = (double)(clock() - start) / CLOCKS_PER_SEC;
+	deque_time = (double)(clock() - start);
 	std::cout << "After: ";
 	PmergeMe::print_container();
-	std::cout << "Time to process a range of " << _vec.size() << " elements with std::vector : " << vec_time << " s" << std::endl;
-	std::cout << "Time to process a range of " << _deque.size() << " elements with std::deque : " << deque_time << " s" << std::endl;
+	std::cout << "Time to process a range of " << _vec.size() << " elements with std::vector : " << vec_time << " us" << std::endl;
+	std::cout << "Time to process a range of " << _deque.size() << " elements with std::deque : " << deque_time << " us" << std::endl;
 }
